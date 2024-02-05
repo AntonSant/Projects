@@ -1,0 +1,12 @@
+def dbl_linear(n):
+    u = [1]
+    c = 0
+    while True:
+        if n*9 >= len(u)-1:
+            u.append(2*u[c]+1)
+            u.append(3*u[c]+1)
+            c += 1
+        else:
+            u = sorted(u)
+            u = list(dict.fromkeys(u))
+            return u[n]
