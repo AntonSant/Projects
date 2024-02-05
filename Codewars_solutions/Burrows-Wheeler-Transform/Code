@@ -1,0 +1,23 @@
+def encode(s):
+    if s=='':
+        return (s, s)
+    f = []
+    for i in range(len(s)):
+        if i >0:
+            f.append(s[-i:]+s[:-i])
+        else: f.append(s)
+    f= sorted(f)
+    return (''.join([i[-1]for i in f]), f.index(s))
+        
+    
+
+def decode(s, n):
+    if s=='':
+        return ''
+    f = [i for i in s]
+    t = [i for i in s]
+    for i in range(int(len(s))):
+        for u,m in enumerate(t):
+            f[u] = m+f[u]
+        f = sorted(f)
+    return(f[n][:-1])
