@@ -1,0 +1,39 @@
+def decode_bits(bits):
+    # ToDo: Accept 0's and 1's, return dots, dashes and spaces
+    splits = []
+    current_segment = ""
+    bits = str(bits).strip('0')
+    for bit in str(bits):
+        if current_segment and bit != current_segment[-1]:
+            splits.append(current_segment)
+            current_segment = bit
+        else:
+            current_segment += bit
+    
+    if current_segment:
+        splits.append(current_segment)
+        
+    splits = sorted(splits, key=len)
+    y = ''
+    i = 1
+    for u in str(bits):
+        i += 1
+        if i % len(splits[0]) == 0:
+            y = y + u 
+
+    return y.replace('111', '-').replace('000', ' ').replace('1', '.').replace('0', '').replace('0000000', '   ')
+
+def decode_morse(morseCode):
+    print(morseCode)
+    # ToDo: Accept dots, dashes and spaces, return human-readable message
+    morseCode = morseCode.split(' ')
+    print(morseCode)
+    sol = ''
+    for u in morseCode:
+        print(u)
+        if u != '':
+            sol += MORSE_CODE[u]
+        else:
+            sol+=' '
+        print(sol)
+    return sol
